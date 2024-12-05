@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import styles from "./LazyImage.module.scss";
+
 interface Props {
     src: string;
     alt: string;
@@ -42,14 +44,14 @@ export const LazyImage = ({ src, alt, placeholder, className, loading }: Props) 
     return (
         <div className={className} style={{ position: "relative" }}>
             {!isLoaded && placeholder && (
-                <img src={placeholder} alt={`Loading ${alt}`} className="loading" />
+                <img src={placeholder} alt={`Loading ${alt}`} className={styles.loading} />
             )}
             <img
                 id={uniqueId}
                 src={src}
                 alt={alt}
                 loading={loading}
-                className="image"
+                className={styles.image}
                 style={{
                     opacity: isLoaded ? 1 : 0,
                     display: isLoaded ? "block" : "none",
